@@ -13,7 +13,6 @@ public class NinjaUlt : MonoBehaviour
     private float shootSpeedStore;
     public float ultShootSpeed;
 
-    private Walking walkingUlt;
     private float walkingSpeedStore;
     public float UltWalkingSpeed;
 
@@ -35,15 +34,13 @@ public class NinjaUlt : MonoBehaviour
         shootUlt = GameObject.Find("Hand").GetComponent<NinjaHand>();
         shootSpeedStore = shootUlt.startTimeBtwShots;
 
-        walkingUlt = GetComponent<Walking>();
-        walkingSpeedStore = walkingUlt.movementSpeed;
+        walkingSpeedStore = GetComponent<playerMovement>().movementSpeed;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         if (ultTime <= 0 && ultAvailable == true)       //Timer for ult
         {
             ultAvailable = false;
@@ -53,7 +50,7 @@ public class NinjaUlt : MonoBehaviour
             shootUlt.startTimeBtwShots = shootSpeedStore;
             shootUlt.ultRunning = false;
 
-            walkingUlt.movementSpeed = walkingSpeedStore;
+            GetComponent<playerMovement>().movementSpeed = walkingSpeedStore;
         }
         else if (ultAvailable == true)
         {
@@ -77,14 +74,12 @@ public class NinjaUlt : MonoBehaviour
                 shootUlt.startTimeBtwShots = ultShootSpeed;
                 shootUlt.ultRunning = true;
 
-                walkingUlt.movementSpeed = UltWalkingSpeed;
+                GetComponent<playerMovement>().movementSpeed = UltWalkingSpeed;
 
                 
                 
             }
         }
-             
-                                     
     }
 
     public void UltimateCharge(int damage)                                      //keeps track of ult charge

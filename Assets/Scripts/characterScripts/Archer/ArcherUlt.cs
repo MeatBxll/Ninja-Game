@@ -69,8 +69,7 @@ public class ArcherUlt : MonoBehaviour
                     Debug.Log("Ult Used");
 
                     GameObject.Find("Archer").GetComponent<Dash>().enabled = false;
-                    GameObject.Find("Archer").GetComponent<Jump>().enabled = false;
-                    GameObject.Find("Archer").GetComponent<Walking>().enabled = false;
+                    GameObject.Find("Archer").GetComponent<playerMovement>().enabled = false;
                 }
             }
 
@@ -81,8 +80,7 @@ public class ArcherUlt : MonoBehaviour
                 ultArrowTimer = startUltArrowTimer;
 
                 GameObject.Find("Archer").GetComponent<Dash>().enabled = true;
-                GameObject.Find("Archer").GetComponent<Jump>().enabled = true;
-                GameObject.Find("Archer").GetComponent<Walking>().enabled = true;
+                GameObject.Find("Archer").GetComponent<playerMovement>().enabled = true;
 
                 if (currentUltShot <= 0)
                 {

@@ -58,8 +58,7 @@ public class SamuraiUlt : MonoBehaviour
             UltHitbox();
             rb.velocity = Vector2.up * upSpeed;                                        //executes while going upward (Timer)
             
-            GetComponent<Walking>().enabled = false;
-            GetComponent<Jump>().enabled = false;
+            GetComponent<playerMovement>().enabled = false;
             GetComponent<Dash>().enabled = false;
             GetComponent<SwordSwing>().enabled = false;
             GetComponent<HorizThrust>().enabled = false;
@@ -81,8 +80,7 @@ public class SamuraiUlt : MonoBehaviour
                 downSlam = false;
                 ultAvailable = false;
 
-                GetComponent<Walking>().enabled = true;
-                GetComponent<Jump>().enabled = true;
+                GetComponent<playerMovement>().enabled = true;
                 GetComponent<Dash>().enabled = true;
                 GetComponent<SwordSwing>().enabled = true;
                 GetComponent<HorizThrust>().enabled = true;             

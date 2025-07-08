@@ -7,8 +7,6 @@ public class Walking : MonoBehaviour
 
     public float movementSpeed;
 
-    public float nothing;
-
     void Start()
     {
         
