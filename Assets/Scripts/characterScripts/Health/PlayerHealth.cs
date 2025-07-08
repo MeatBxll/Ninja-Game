@@ -7,7 +7,6 @@ public class PlayerHealth : MonoBehaviour
 
     private int hearts;
     public int maxHearts;
-   
 
     private float currentInvinsibililty;
     public float maxInvinsibility;
@@ -36,9 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-
-       currentInvinsibililty -= Time.deltaTime;
-
+    currentInvinsibililty -= Time.deltaTime;
     }
 
 

@@ -5,95 +5,58 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    private Rigidbody2D rigidbodyComponent;
 
     public float jumpMultiplier;
 
-    public int availableJumps;
 
-    private int currentJump;
-
-    bool isGrounded;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-
-    private float jumpDelayTime;
-    private float startJumpDelayTime;
-
-    private bool usingJump;
+    private Rigidbody2D rigidbodyComponent;
+    private int availableJumps;
+    private bool isGrounded;
+    private CapsuleCollider2D myCollider;
 
 
-
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
-
-    
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        myCollider = GetComponent<CapsuleCollider2D>();
         rigidbodyComponent = GetComponent<Rigidbody2D>();
-        startJumpDelayTime = 0.1f;
-        jumpDelayTime = startJumpDelayTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-
-        
-        // Checks if their is any jumps available and allows the platyer to jump if their is
-        if (currentJump < availableJumps && usingJump == false)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (availableJumps != 0)
             {
+
                 rigidbodyComponent.velocity = Vector2.up * jumpMultiplier;
-                usingJump = true;
-                currentJump++;
+                availableJumps--;
+                Invoke("ResetJump",  0.2f);
             }
         }
 
-        // Adds a force on the way down from the jump
-        // Can tap the jump to not go as high or hold it to reach the peak
-
-        if (rigidbodyComponent.velocity.y < 0) {
-            rigidbodyComponent.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (rigidbodyComponent.velocity.y > 0 && !Input.GetButton("Jump")) {
-            rigidbodyComponent.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
-
+        Vector3 GroundCheckPosition = new Vector3(transform.position.x, transform.position.y - myCollider.size.y / 2, 0);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(GroundCheckPosition, 0.2f);
+        if (hits.Length == 0) isGrounded = false;
         
-        // checks if the player is touching the ground
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
-
-        // resets the amount of jumps when grounded
-        if (currentJump > 0)
+        foreach (Collider2D hit in hits)
         {
-            if (isGrounded && usingJump == false)
+            if (hit != myCollider)
             {
-                currentJump = 0;
+                isGrounded = true;
+                break;
             }
         }
-
-        // adds a small delay when jumping to prevent the player from getting an extra jump when first jumping
-        if(jumpDelayTime <= 0 && usingJump == true)
-        {
-            usingJump = false;
-            jumpDelayTime = startJumpDelayTime;
-        }
-        else if(usingJump == true)
-        {
-            jumpDelayTime -= Time.deltaTime;
-        }
-
-
+        Debug.Log(isGrounded);
+        
+        if (isGrounded) availableJumps = 1;
 
     }
+
+    private void ResetJump()
+    {
+        availableJumps = 1;
+    }
 }
-        
 
 
 
