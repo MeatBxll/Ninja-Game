@@ -18,7 +18,6 @@ public class ArcherUlt : MonoBehaviour
     private int currentUltShot;     // keeps track of how many shots are left
     public int numberOfUltShot;
 
-    private Walking walkingUlt;         //Change movement speed while in ult
     public float ultMovementSpeed;
     private float movementSpeedStore;
 
@@ -28,25 +27,23 @@ public class ArcherUlt : MonoBehaviour
     private bool ultArrowTimerOn;
     void Start()
     {
-        walkingUlt = GameObject.Find("Archer").GetComponent<Walking>();
-        
-        movementSpeedStore = walkingUlt.movementSpeed;
+
+        movementSpeedStore = GameObject.Find("Archer").GetComponent<playerMovement>().movementSpeed;
 
         ultArrowTimer = startUltArrowTimer;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         if (ultArrowTimer <= 0 && ultArrowTimerOn == true)      //Ends the Ult if the timer runs out (Timer)              
         {
-            currentUltShot = 0;                                            
+            currentUltShot = 0;
             GetComponent<Bow>().ultInUse = false;
 
             Debug.Log("Ult Ended No Time");
 
-            walkingUlt.movementSpeed = movementSpeedStore;
+            GameObject.Find("Archer").GetComponent<playerMovement>().movementSpeed = movementSpeedStore;
 
             ultArrowTimerOn = false;
             ultArrowTimer = startUltArrowTimer;
@@ -68,7 +65,6 @@ public class ArcherUlt : MonoBehaviour
                     currentUltShot--;
                     Debug.Log("Ult Used");
 
-                    GameObject.Find("Archer").GetComponent<Dash>().enabled = false;
                     GameObject.Find("Archer").GetComponent<playerMovement>().enabled = false;
                 }
             }
@@ -79,12 +75,11 @@ public class ArcherUlt : MonoBehaviour
                 ultChargingUp = false;
                 ultArrowTimer = startUltArrowTimer;
 
-                GameObject.Find("Archer").GetComponent<Dash>().enabled = true;
                 GameObject.Find("Archer").GetComponent<playerMovement>().enabled = true;
 
                 if (currentUltShot <= 0)
                 {
-                    walkingUlt.movementSpeed = movementSpeedStore;                 //Resets movement and variables if there is no more shots available
+                    GameObject.Find("Archer").GetComponent<playerMovement>().movementSpeed = movementSpeedStore;                 //Resets movement and variables if there is no more shots available
                     GetComponent<Bow>().ultInUse = false;
                     ultArrowTimerOn = false;
 
@@ -102,10 +97,10 @@ public class ArcherUlt : MonoBehaviour
                 ultArrowTimer = startUltArrowTimer;
                 ultArrowTimerOn = false;
 
-                walkingUlt.movementSpeed = movementSpeedStore;
+                GetComponent<playerMovement>().movementSpeed = movementSpeedStore;
             }
         }
-               
+
         if (currentUltCharge >= completeUltCharge)
         {
             if (Input.GetKey(KeyCode.Q))                //checks if the requirements are met for ult
@@ -116,7 +111,7 @@ public class ArcherUlt : MonoBehaviour
 
                 GetComponent<Bow>().ultInUse = true;
 
-                walkingUlt.movementSpeed = ultMovementSpeed;
+                GameObject.Find("Archer").GetComponent<playerMovement>().movementSpeed = ultMovementSpeed;
 
                 ultArrowTimerOn = true;
             }

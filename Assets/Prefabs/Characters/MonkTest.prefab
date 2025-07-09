@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 5704987371911865054}
   - component: {fileID: 5704987371911865055}
   - component: {fileID: 5704987371911865040}
-  - component: {fileID: 5704987371911865050}
   - component: {fileID: 5704987371911865048}
   - component: {fileID: 5704987371911865063}
   - component: {fileID: 5704987371911865049}
@@ -162,23 +161,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5704987371911865050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704987371911865041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8690ea6fa9e29349b22d4719f9f6d00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfDashes: 2
-  currentDash: 0
-  dashSpeed: 20
-  startDashTime: 0.2
-  dashCooldown: 3
 --- !u!114 &5704987371911865048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 15
   jumpMultiplier: 20
+  dashSpeed: 0
+  dashDistance: 0
 --- !u!1 &5704987372071085823
 GameObject:
   m_ObjectHideFlags: 0

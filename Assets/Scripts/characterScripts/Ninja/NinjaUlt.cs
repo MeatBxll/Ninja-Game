@@ -5,11 +5,10 @@ using UnityEngine;
 public class NinjaUlt : MonoBehaviour
 {
 
-    private Dash dashUlt;       //Used to call the dash function
     private int dashStore;      // Stores the original number of dashes
     public int ultNumberOfDashes;
 
-    private NinjaHand shootUlt;         
+    private NinjaHand shootUlt;
     private float shootSpeedStore;
     public float ultShootSpeed;
 
@@ -22,14 +21,12 @@ public class NinjaUlt : MonoBehaviour
     private int currentUltCharge;      //Used for status of ult charge
     public int completeUltCharge;
     private bool ultAvailable;
-    
+
 
 
     void Start()
     {
 
-        dashUlt = GetComponent<Dash>();        
-        dashStore = dashUlt.numberOfDashes;
 
         shootUlt = GameObject.Find("Hand").GetComponent<NinjaHand>();
         shootSpeedStore = shootUlt.startTimeBtwShots;
@@ -44,8 +41,7 @@ public class NinjaUlt : MonoBehaviour
         if (ultTime <= 0 && ultAvailable == true)       //Timer for ult
         {
             ultAvailable = false;
-            
-            dashUlt.numberOfDashes = dashStore;
+
 
             shootUlt.startTimeBtwShots = shootSpeedStore;
             shootUlt.ultRunning = false;
@@ -56,10 +52,10 @@ public class NinjaUlt : MonoBehaviour
         {
             ultTime -= Time.deltaTime;
         }
-        
-        
-        
-        
+
+
+
+
         if (currentUltCharge >= completeUltCharge)      // Ult activation
         {
             if (Input.GetKey(KeyCode.Q))
@@ -68,25 +64,23 @@ public class NinjaUlt : MonoBehaviour
                 currentUltCharge = 0;
                 ultAvailable = true;
 
-                dashUlt.numberOfDashes = ultNumberOfDashes;     // Changes the amount of dashes
-                dashUlt.currentDash = ultNumberOfDashes;
 
                 shootUlt.startTimeBtwShots = ultShootSpeed;
                 shootUlt.ultRunning = true;
 
                 GetComponent<playerMovement>().movementSpeed = UltWalkingSpeed;
 
-                
-                
+
+
             }
         }
     }
 
     public void UltimateCharge(int damage)                                      //keeps track of ult charge
     {
-        
+
         if (currentUltCharge < completeUltCharge && ultAvailable == false)
-        {                       
+        {
             currentUltCharge += damage;
         }
 

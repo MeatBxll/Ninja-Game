@@ -17,11 +17,11 @@ public class SamuraiUlt : MonoBehaviour
     bool isGrounded;                            //checks if the player touches the ground
     public Transform groundCheck;
     public LayerMask groundLayer;
-    
+
     public int completeUltCharge;       //ult charge Total in damage
     private int currentUltCharge;
 
-    private bool ultAvailable;  
+    private bool ultAvailable;
 
     private bool downSlam;              //used for on the way down and speed multiplier
     public float downSpeed;
@@ -37,7 +37,7 @@ public class SamuraiUlt : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
-        ultAvailable = false;       
+        ultAvailable = false;
 
     }
 
@@ -46,20 +46,19 @@ public class SamuraiUlt : MonoBehaviour
     {
 
 
-        if(samuraiUltTimeUp <= 0 && ultAvailable == true && downSlam == false)         //Timer
+        if (samuraiUltTimeUp <= 0 && ultAvailable == true && downSlam == false)         //Timer
         {
             rb.gravityScale = 0.0f;                                                    //Executes after the upward timer is over and start downslam timer
             rb.velocity = Vector2.zero;
 
             downSlam = true;
         }
-        else if(ultAvailable == true && downSlam == false)
+        else if (ultAvailable == true && downSlam == false)
         {
             UltHitbox();
             rb.velocity = Vector2.up * upSpeed;                                        //executes while going upward (Timer)
-            
+
             GetComponent<playerMovement>().enabled = false;
-            GetComponent<Dash>().enabled = false;
             GetComponent<SwordSwing>().enabled = false;
             GetComponent<HorizThrust>().enabled = false;
 
@@ -74,22 +73,21 @@ public class SamuraiUlt : MonoBehaviour
             UltHitbox();
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-            if(isGrounded)
+            if (isGrounded)
             {
                 rb.gravityScale = 1.0f;                                                //resets everything once grounded
                 downSlam = false;
                 ultAvailable = false;
 
                 GetComponent<playerMovement>().enabled = true;
-                GetComponent<Dash>().enabled = true;
                 GetComponent<SwordSwing>().enabled = true;
-                GetComponent<HorizThrust>().enabled = true;             
+                GetComponent<HorizThrust>().enabled = true;
 
                 Instantiate(projectile, ultShotPoint1.position, transform.rotation); //Spawns the Shockwaves
                 Instantiate(projectile, ultShotPoint2.position, transform.rotation);
             }
         }
-              
+
 
         if (currentUltCharge >= completeUltCharge)
         {
@@ -108,7 +106,7 @@ public class SamuraiUlt : MonoBehaviour
     {
         if (currentUltCharge < completeUltCharge && ultAvailable == false)
         {
-            currentUltCharge += damage;           
+            currentUltCharge += damage;
         }
 
     }
@@ -133,7 +131,7 @@ public class SamuraiUlt : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()             
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
 
