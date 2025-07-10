@@ -286,15 +286,32 @@ PrefabInstance:
       propertyPath: jumpMultiplier
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4820171836471603911, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4820171836471603916, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
       propertyPath: m_Name
       value: Ninja
       objectReference: {fileID: 0}
     - target: {fileID: 4820171836471603917, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820171836471603917, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590666295182057432, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
+      propertyPath: dashSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590666295182057432, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
+      propertyPath: dashDistance
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4820171836471603911, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 392f22e997c60204483c8c8ff04c33c3, type: 3}
 --- !u!1001 &1734002177
 PrefabInstance:

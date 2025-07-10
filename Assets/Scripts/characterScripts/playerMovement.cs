@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
@@ -10,15 +10,16 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDistance;
 
-    private bool canMove = true;
-    private bool canDash = true;
+    [NonSerialized] public bool canMove = true;
+    [NonSerialized] public bool isDashing = false;
+
     private Rigidbody2D rb;
     private bool canJump;
     private bool isGrounded;
     private CapsuleCollider2D myCollider;
 
-    private KeyCode jumpButton = KeyCode.Space;
-    private KeyCode dashButton = KeyCode.LeftShift;
+    [NonSerialized] public KeyCode jumpButton = KeyCode.Space;
+    [NonSerialized] public KeyCode dashButton = KeyCode.LeftShift;
 
     void Start()
     {
@@ -32,14 +33,12 @@ public class playerMovement : MonoBehaviour
         {
             HandleJump();
             HandleMovement();
-        }
 
-        if (Input.GetKeyDown(dashButton) && canDash)
-        {
-            StartCoroutine(HandleDash());
-            Debug.Log("dash pressed");
+            if (Input.GetKeyDown(dashButton) && !isDashing)
+                StartCoroutine(HandleDash());
         }
     }
+
     void HandleJump()
     {
         if (Input.GetKeyDown(jumpButton))
@@ -91,9 +90,9 @@ public class playerMovement : MonoBehaviour
     private IEnumerator HandleDash()
     {
         float gravityScale = rb.gravityScale;
-        canDash = false;
+        isDashing = true;
         int i = 0;
-        while (i < 4)
+        while (i < 7)
         {
             if (i == 0)
             {
@@ -116,7 +115,7 @@ public class playerMovement : MonoBehaviour
             yield return new WaitForSeconds(dashDistance / dashSpeed);
         }
 
-        canDash = true;
+        isDashing = false;
     }
 }
 
