@@ -5,6 +5,11 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public GameObject[] Menus;
+    private gameController gameController;
+    void Start()
+    {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+    }
 
     public void ChooseMenu(int m)
     {
@@ -15,10 +20,10 @@ public class MainMenu : MonoBehaviour
 
     public void ChooseYourCharacter(int i)
     {
-        //make an array with all the characters in it then when the index comes in match the character to the index and pass that character into the scene somehow
+        gameController.currentPlayerCharacterIndex = i;
     }
     public void QuitGame()
     {
-
+        Application.Quit();
     }
 }
