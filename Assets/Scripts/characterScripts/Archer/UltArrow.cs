@@ -14,9 +14,9 @@ public class UltArrow : MonoBehaviour
     public float ultRange;
     public LayerMask WhatIsEnemies;
 
-    public int damage;             
+    public int damage;
 
-    private bool madeContact;      
+    private bool madeContact;
 
     private float explosionTime;        //How long the aoe affect lasts
     public float startExplosionTime;
@@ -46,25 +46,24 @@ public class UltArrow : MonoBehaviour
                 DestroyBullet();
             }
             else
-            {           
+            {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(ultPos.position, ultRange, WhatIsEnemies); // Hit Box for the explosion
 
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                     if (enemiesToDamage[i].gameObject.layer == 6)
                     {
-                        enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
                     }
 
                     if (enemiesToDamage[i].gameObject.layer == 9)
                     {
                         enemiesToDamage[i].GetComponent<Health>().TakeDamage(damage);
                     }
-                }            
-                
+                }
+
                 explosionTime -= Time.deltaTime;
             }
-        }        
+        }
     }
 
 
@@ -78,7 +77,6 @@ public class UltArrow : MonoBehaviour
 
         if (collision.gameObject.layer == 6)   //Regualar Enemy
         {
-            collision.GetComponent<BaseEnemyHealth>().DestroyEnemy();
             DestroyBullet();
             ExplodeOnImpact();
         }
@@ -86,12 +84,12 @@ public class UltArrow : MonoBehaviour
 
         if (collision.gameObject.layer == 9)        //Boss
         {
-            collision.GetComponent<Health>().TakeDamage(damage);         
+            collision.GetComponent<Health>().TakeDamage(damage);
             DestroyBullet();
             ExplodeOnImpact();
         }
 
- 
+
     }
 
 

@@ -32,24 +32,24 @@ public class WhirlWind : MonoBehaviour
 
     void Start()
     {
-        
+
         ultAvailable = false;
 
     }
 
     void Update()
-    {                              
-           
-        
-       if(whirlwindTime <= 0 && ultAvailable == true)       //Timer for ult
-       {
+    {
+
+
+        if (whirlwindTime <= 0 && ultAvailable == true)       //Timer for ult
+        {
             ultAvailable = false;
 
             GetComponent<StaffAttack>().enabled = true;
             GetComponent<WhirlWind>().enabled = true;
         }
-       else if(ultAvailable == true)
-       {
+        else if (ultAvailable == true)
+        {
 
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(spinPos.position, spinRange, WhatIsEnemies);
 
@@ -64,7 +64,6 @@ public class WhirlWind : MonoBehaviour
 
                 if (enemiesToDamage[i].gameObject.layer == 6)
                 {
-                    enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
                 }
 
             }
@@ -90,18 +89,18 @@ public class WhirlWind : MonoBehaviour
         if (currentBossInvinsibleTime <= 0 && bossInvinsible == true)
         {
             bossInvinsible = false;
-        } 
+        }
         else if (bossInvinsible == true)
         {
             currentBossInvinsibleTime -= Time.deltaTime;
         }
-        
+
 
 
 
         if (currentStunTime <= 0 && stunned == true)        //delay after getting hit during ult before getting abilities back
         {
-            GetComponent<StaffAttack>().enabled =true;
+            GetComponent<StaffAttack>().enabled = true;
             GetComponent<SpinAttack>().enabled = true;
             stunned = false;
         }
@@ -123,13 +122,13 @@ public class WhirlWind : MonoBehaviour
 
 
     public void UltimateCharge(int damage)                                      //keeps track of ult charge
-    {      
-        if(currentUltCharge < completeUltCharge && ultAvailable == false)
+    {
+        if (currentUltCharge < completeUltCharge && ultAvailable == false)
         {
             currentUltCharge += damage;
-            
+
         }
-                                   
+
     }
 
     private void OnDrawGizmosSelected()

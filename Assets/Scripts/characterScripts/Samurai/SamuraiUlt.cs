@@ -125,7 +125,6 @@ public class SamuraiUlt : MonoBehaviour
 
             if (enemiesToDamage[i].gameObject.layer == 6)
             {
-                enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
             }
 
         }

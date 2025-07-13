@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 319522774197547964}
   - component: {fileID: 2744260791870407711}
   - component: {fileID: 8865298003650362783}
-  - component: {fileID: 6126325315442210281}
   m_Layer: 6
   m_Name: flyingShooter
   m_TagString: Enemy
@@ -31,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -178.74197, y: 2.0457678, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -140,16 +141,3 @@ MonoBehaviour:
   fireRate: 1
   agroRange: 100
   moveSpeed: 10
---- !u!114 &6126325315442210281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3762607589380670401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 067f8301e4af97040b25e08ebd85b057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ultCharge: 50

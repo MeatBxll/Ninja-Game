@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpinAttack : MonoBehaviour
 {
-    
+
     private float spinCooldown;         //Spin cooldown (Timer)
     public float startSpinCooldown;
 
     private float spinTime;             //How long the spin is active (Timer)
     public float startSpinTime;
 
-    private bool spinAvailable;        
+    private bool spinAvailable;
 
     public Transform spinPos;           //Spin hitbox
     public float spinRange;
@@ -32,8 +32,8 @@ public class SpinAttack : MonoBehaviour
 
 
 
-        if(spinCooldown <= 0 && spinAvailable == true)          //checks if the spin is on cooldown (Timer)
-        {    
+        if (spinCooldown <= 0 && spinAvailable == true)          //checks if the spin is on cooldown (Timer)
+        {
             if (Input.GetMouseButtonDown(1))
             {
 
@@ -42,7 +42,7 @@ public class SpinAttack : MonoBehaviour
 
             }
         }
-        else if(spinAvailable == true)
+        else if (spinAvailable == true)
         {
             spinCooldown -= Time.deltaTime;
         }
@@ -54,7 +54,7 @@ public class SpinAttack : MonoBehaviour
             spinCooldown = startSpinCooldown;
             spinAvailable = true;
         }
-        else if(spinAvailable == false)
+        else if (spinAvailable == false)
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(spinPos.position, spinRange, WhatIsEnemies);
 
@@ -69,8 +69,6 @@ public class SpinAttack : MonoBehaviour
 
                 if (enemiesToDamage[i].gameObject.layer == 6)
                 {
-                    enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
-                    baseEnemyUltCharge = enemiesToDamage[i].GetComponent<BaseEnemyHealth>().ultCharge;
                     GetComponent<WhirlWind>().UltimateCharge(baseEnemyUltCharge);
                 }
 
@@ -84,7 +82,7 @@ public class SpinAttack : MonoBehaviour
 
 
 
-    private void OnDrawGizmosSelected()             
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.gray;
 

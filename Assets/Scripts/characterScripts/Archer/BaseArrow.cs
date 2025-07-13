@@ -30,7 +30,7 @@ public class BaseArrow : MonoBehaviour
         rb.velocity = transform.right * speed;
 
     }
-     
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,7 +41,6 @@ public class BaseArrow : MonoBehaviour
 
         if (collision.gameObject.layer == 6)   //Regualar Enemy
         {
-            collision.GetComponent<BaseEnemyHealth>().DestroyEnemy();
             GameObject.Find("Bow").GetComponent<ArcherUlt>().UltimateCharge(baseEnemyDamage);
             DestroyBullet();
         }

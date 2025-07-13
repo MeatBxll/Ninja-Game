@@ -35,7 +35,6 @@ public class UltShockwave : MonoBehaviour
 
         if (collision.gameObject.layer == 6)   //Regualar Enemy
         {
-            collision.GetComponent<BaseEnemyHealth>().DestroyEnemy();
             DestroyBullet();
         }
 

@@ -22,6 +22,7 @@ public class Bulletv2 : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")    //Can change tag or anything in this function
         {
+            Destroy(collision.gameObject);
             DestroyBullet();
         }
 

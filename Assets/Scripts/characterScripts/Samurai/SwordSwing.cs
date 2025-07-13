@@ -44,8 +44,6 @@ public class SwordSwing : MonoBehaviour
 
                     if (enemiesToDamage[i].gameObject.layer == 6)
                     {
-                        enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
-                        baseEnemyUltCharge = enemiesToDamage[i].GetComponent<BaseEnemyHealth>().ultCharge;
                         GetComponent<SamuraiUlt>().UltimateCharge(baseEnemyUltCharge);
                     }
 

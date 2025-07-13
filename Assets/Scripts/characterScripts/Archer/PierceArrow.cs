@@ -38,7 +38,6 @@ public class PierceArrow : MonoBehaviour
 
         if (collision.gameObject.layer == 6)   //Regualar Enemy
         {
-            collision.GetComponent<BaseEnemyHealth>().DestroyEnemy();
             GameObject.Find("Bow").GetComponent<ArcherUlt>().UltimateCharge(baseEnemyDamage);
         }
 

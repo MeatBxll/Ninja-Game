@@ -36,7 +36,7 @@ public class HorizThrust : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
 
     // Update is called once per frame
@@ -99,8 +99,8 @@ public class HorizThrust : MonoBehaviour
                 rb.velocity = Vector2.left * thrustSpeed;
             }
 
-            
-            
+
+
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, WhatIsEnemies);  //hitbox for the thrust
 
             for (int i = 0; i < enemiesToDamage.Length; i++)
@@ -111,13 +111,11 @@ public class HorizThrust : MonoBehaviour
                     enemiesToDamage[i].GetComponent<Health>().TakeDamage(damage);
                     GetComponent<SamuraiUlt>().UltimateCharge(damage);
                     thrustTime = 0;
-                    
+
                 }
 
                 if (enemiesToDamage[i].gameObject.layer == 6)
                 {
-                    enemiesToDamage[i].GetComponent<BaseEnemyHealth>().DestroyEnemy();
-                    baseEnemyUltCharge = enemiesToDamage[i].GetComponent<BaseEnemyHealth>().ultCharge;
                     GetComponent<SamuraiUlt>().UltimateCharge(baseEnemyUltCharge);
                     thrustTime = 0;
                     //enemiesToDamage[i].GetComponent<Rigidbody2D>().AddForce 
