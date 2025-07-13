@@ -8,6 +8,8 @@ public class playerRanged : MonoBehaviour
     [SerializeField] private float secondsBetweenShots = 0.5f;
 
     private bool canShoot = true;
+    public bool isSpreadShot = false;
+    public float spreadAngle;
 
     void Update()
     {
@@ -28,6 +30,23 @@ public class playerRanged : MonoBehaviour
         GameObject projClone = Instantiate(projectile, transform.position, projRotation);
         projClone.GetComponent<Rigidbody2D>().velocity = projDirection * projectileSpeed;
         projClone.GetComponent<Bulletv2>().player = gameObject;
+
+        if (isSpreadShot)
+        {
+            float[] angles = new float[] { -spreadAngle, spreadAngle };
+            GameObject[] projCloneSpread = new GameObject[angles.Length];
+
+            for (int i = 0; i < angles.Length; i++)
+            {
+                Quaternion spreadRotation = Quaternion.Euler(0, 0, angles[i]) * projRotation;
+                Vector3 spreadDirection = spreadRotation * Vector3.right;
+
+                projCloneSpread[i] = Instantiate(projectile, transform.position, spreadRotation);
+                projCloneSpread[i].GetComponent<Rigidbody2D>().velocity = spreadDirection * projectileSpeed;
+                projCloneSpread[i].GetComponent<Bulletv2>().player = gameObject;
+            }
+        }
+
 
         yield return new WaitForSeconds(secondsBetweenShots);
         canShoot = true;

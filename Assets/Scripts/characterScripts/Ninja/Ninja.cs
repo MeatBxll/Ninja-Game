@@ -23,8 +23,9 @@ public class Ninja : MonoBehaviour
     {
         abilityOffCD = false;
         int i = 0;
-        while (i < 5)
+        while (i < 2)
         {
+            gameObject.GetComponent<playerRanged>().isSpreadShot = true;
             yield return new WaitForSeconds(abilityDurration);
         }
         abilityOffCD = true;
