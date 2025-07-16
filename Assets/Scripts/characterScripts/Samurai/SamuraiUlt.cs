@@ -49,14 +49,14 @@ public class SamuraiUlt : MonoBehaviour
         if (samuraiUltTimeUp <= 0 && ultAvailable == true && downSlam == false)         //Timer
         {
             rb.gravityScale = 0.0f;                                                    //Executes after the upward timer is over and start downslam timer
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
 
             downSlam = true;
         }
         else if (ultAvailable == true && downSlam == false)
         {
             UltHitbox();
-            rb.velocity = Vector2.up * upSpeed;                                        //executes while going upward (Timer)
+            rb.linearVelocity = Vector2.up * upSpeed;                                        //executes while going upward (Timer)
 
             GetComponent<playerMovement>().enabled = false;
             GetComponent<SwordSwing>().enabled = false;
@@ -69,7 +69,7 @@ public class SamuraiUlt : MonoBehaviour
         if (downSlam == true)
         {
 
-            rb.velocity = Vector2.down * downSpeed;                                    //Executes while going down. Checks if grounded
+            rb.linearVelocity = Vector2.down * downSpeed;                                    //Executes while going down. Checks if grounded
             UltHitbox();
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 

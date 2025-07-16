@@ -218,12 +218,12 @@ public class SBoss2 : MonoBehaviour
     //Charge Attack Stuff
     void chargeAttackRight()
     {
-        rb.velocity = new Vector2(pinHold * stageTwo, rb.velocity.y);
+        rb.linearVelocity = new Vector2(pinHold * stageTwo, rb.linearVelocity.y);
         pinHold = pinHold + pinIncreaseAmount;
     }
     void chargeAttackLeft()
     {
-        rb.velocity = new Vector2(pinHold * stageTwo, rb.velocity.y);
+        rb.linearVelocity = new Vector2(pinHold * stageTwo, rb.linearVelocity.y);
         pinHold = pinHold - pinIncreaseAmount;
     }
 
@@ -240,7 +240,7 @@ public class SBoss2 : MonoBehaviour
     {
         if(onlyOnce == false)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             rb.AddForce(Vector2.up * (slamHeight - stageTwo), ForceMode2D.Impulse);
             slamDelayHolder = Time.time + slamDelayAfterJump;
 
@@ -287,7 +287,7 @@ public class SBoss2 : MonoBehaviour
 
                     if (hitPos.normal.x > 0)
                     {
-                        rb.velocity = new Vector2(0, 0);
+                        rb.linearVelocity = new Vector2(0, 0);
                         rb.AddForce(Vector2.right * fallBackSpeed);
                         rb.AddForce(Vector2.up * fallBackHeight);
 
@@ -320,16 +320,16 @@ public class SBoss2 : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed * stageTwo, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed * stageTwo, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed * stageTwo, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed * stageTwo, rb.linearVelocity.y);
         }
     }
     void StopChasingPlayer()
     {
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
     }
 
 

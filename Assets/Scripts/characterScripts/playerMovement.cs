@@ -45,7 +45,7 @@ public class playerMovement : MonoBehaviour
         {
             if (canJump)
             {
-                rb.velocity = Vector2.up * jumpMultiplier;
+                rb.linearVelocity = Vector2.up * jumpMultiplier;
                 canJump = false;
             }
         }
@@ -68,7 +68,7 @@ public class playerMovement : MonoBehaviour
     {
         float inputX = Input.GetAxis("Horizontal");
         float desiredSpeed = inputX * movementSpeed;
-        float currentX = rb.velocity.x;
+        float currentX = rb.linearVelocity.x;
 
         if (Mathf.Approximately(inputX, 0f))
             return;
@@ -77,13 +77,13 @@ public class playerMovement : MonoBehaviour
         {
             if (Mathf.Abs(currentX) < Mathf.Abs(desiredSpeed))
             {
-                rb.velocity = new Vector2(desiredSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(desiredSpeed, rb.linearVelocity.y);
             }
         }
         else
         {
             float resistanceForce = desiredSpeed * 0.5f;
-            rb.velocity = new Vector2(currentX + resistanceForce, rb.velocity.y);
+            rb.linearVelocity = new Vector2(currentX + resistanceForce, rb.linearVelocity.y);
         }
     }
 
@@ -101,13 +101,13 @@ public class playerMovement : MonoBehaviour
                 Vector3 dashDirection = (mouseWorldPos - transform.position).normalized;
 
                 rb.gravityScale = 0;
-                rb.velocity = dashDirection * dashSpeed;
+                rb.linearVelocity = dashDirection * dashSpeed;
                 canMove = false;
             }
             else if (i == 1)
             {
                 canMove = true;
-                rb.velocity = new Vector3(rb.velocity.x / 5, rb.velocity.y / 5, 0);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x / 5, rb.linearVelocity.y / 5, 0);
                 rb.gravityScale = gravityScale;
             }
 

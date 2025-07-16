@@ -48,38 +48,38 @@ public class b4Web2 : MonoBehaviour
             {
                 if(randomHolder == 1)
                 {
-                    rb.velocity = new Vector2(-speed1,height1);
+                    rb.linearVelocity = new Vector2(-speed1,height1);
                 }
                 if (randomHolder == 2)
                 {
-                    rb.velocity = new Vector2(-speed2, height2);
+                    rb.linearVelocity = new Vector2(-speed2, height2);
                 }
                 if (randomHolder == 3)
                 {
-                    rb.velocity = new Vector2(-speed3,height3);
+                    rb.linearVelocity = new Vector2(-speed3,height3);
                 }
                 if (randomHolder == 4)
                 {
-                    rb.velocity = new Vector2(-speed4, height4);
+                    rb.linearVelocity = new Vector2(-speed4, height4);
                 }
             }
             else
             {
                 if (randomHolder == 1)
                 {
-                    rb.velocity = new Vector2(speed1, height1);
+                    rb.linearVelocity = new Vector2(speed1, height1);
                 }
                 if (randomHolder == 2)
                 {
-                    rb.velocity = new Vector2(speed2, height2);
+                    rb.linearVelocity = new Vector2(speed2, height2);
                 }
                 if (randomHolder == 3)
                 {
-                    rb.velocity = new Vector2(speed3, height3);
+                    rb.linearVelocity = new Vector2(speed3, height3);
                 }
                 if (randomHolder == 4)
                 {
-                    rb.velocity = new Vector2(speed4, height4);
+                    rb.linearVelocity = new Vector2(speed4, height4);
                 }
             }
         }
@@ -88,7 +88,7 @@ public class b4Web2 : MonoBehaviour
             if (stopTimeHolder < Time.time)
             {
                 stop = true;
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 stopTimeHolder = 0;
             }
         }

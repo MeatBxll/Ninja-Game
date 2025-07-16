@@ -35,7 +35,7 @@ public class UltArrow : MonoBehaviour
     {
         if (madeContact == false)                       //Moves bullets 
         {
-            rb.velocity = transform.right * speed;
+            rb.linearVelocity = transform.right * speed;
         }
 
         if (madeContact == true)
@@ -97,7 +97,7 @@ public class UltArrow : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
         madeContact = true;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         Debug.Log("Exploded");
         explosionTime = startExplosionTime;
     }

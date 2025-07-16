@@ -28,7 +28,7 @@ public class playerRanged : MonoBehaviour
         Quaternion projRotation = Quaternion.FromToRotation(Vector3.right, projDirection);
 
         GameObject projClone = Instantiate(projectile, transform.position, projRotation);
-        projClone.GetComponent<Rigidbody2D>().velocity = projDirection * projectileSpeed;
+        projClone.GetComponent<Rigidbody2D>().linearVelocity = projDirection * projectileSpeed;
         projClone.GetComponent<Bulletv2>().player = gameObject;
 
         if (isSpreadShot)
@@ -42,7 +42,7 @@ public class playerRanged : MonoBehaviour
                 Vector3 spreadDirection = spreadRotation * Vector3.right;
 
                 projCloneSpread[i] = Instantiate(projectile, transform.position, spreadRotation);
-                projCloneSpread[i].GetComponent<Rigidbody2D>().velocity = spreadDirection * projectileSpeed;
+                projCloneSpread[i].GetComponent<Rigidbody2D>().linearVelocity = spreadDirection * projectileSpeed;
                 projCloneSpread[i].GetComponent<Bulletv2>().player = gameObject;
             }
         }

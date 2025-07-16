@@ -16,7 +16,7 @@ public class b1BloodSpit2 : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         moveDirection = (player.transform.position - transform.position).normalized * bloodSpitSpeed;
-        rb.velocity = new Vector2(moveDirection.x + distanceFromPlayer, moveDirection.y);
+        rb.linearVelocity = new Vector2(moveDirection.x + distanceFromPlayer, moveDirection.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

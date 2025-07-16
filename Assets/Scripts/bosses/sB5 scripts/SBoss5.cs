@@ -210,11 +210,11 @@ public class SBoss5 : MonoBehaviour
             rb.AddForce(Vector2.up * leapHeight, ForceMode2D.Impulse);
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(leapHorizontalForce, rb.velocity.y);
+                rb.linearVelocity = new Vector2(leapHorizontalForce, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-leapHorizontalForce, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-leapHorizontalForce, rb.linearVelocity.y);
             }
 
             leapOnlyOnce = true;
@@ -238,7 +238,7 @@ public class SBoss5 : MonoBehaviour
         {
 
             moveDirection = (player.transform.position - transform.position).normalized * thrustSpeed;
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+            rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
             Invoke("resetBoss", thrustDurration);
             onlyOnce = true;
         }
@@ -399,7 +399,7 @@ public class SBoss5 : MonoBehaviour
             if (rightDashHolder < Time.time)
             {
                 //boss dashes right but is on the left
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.down * bombDownForce, ForceMode2D.Impulse);
                 Invoke("resetBoss", bombResetTime);
                 leftDashHolder = 0;
@@ -412,7 +412,7 @@ public class SBoss5 : MonoBehaviour
             if (leftDashHolder < Time.time)
             {
                 //boss dashes left but is on the right
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.down * bombDownForce, ForceMode2D.Impulse);
                 Invoke("resetBoss", bombResetTime);
                 leftDashHolder = 0;
@@ -439,11 +439,11 @@ public class SBoss5 : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(cloneHorizontalForce, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(cloneHorizontalForce, rb.linearVelocity.y);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-cloneHorizontalForce, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-cloneHorizontalForce, rb.linearVelocity.y);
                 }
             }
 
@@ -471,7 +471,7 @@ public class SBoss5 : MonoBehaviour
     {
         onlyOneBomb = false;
         cloneHolder = 0;
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         leap = true;
         thrust = false;
         teleportBehind = false;

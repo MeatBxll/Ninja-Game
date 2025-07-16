@@ -24,11 +24,11 @@ public class SBoss5Clone : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(cloneHorizontalForce, rb.velocity.y);
+                rb.linearVelocity = new Vector2(cloneHorizontalForce, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-cloneHorizontalForce, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-cloneHorizontalForce, rb.linearVelocity.y);
             }
         }
     }

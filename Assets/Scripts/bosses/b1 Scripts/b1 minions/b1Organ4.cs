@@ -30,7 +30,7 @@ public class b1Organ4 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         moveDirection = (player.transform.position - transform.position).normalized * organFireSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
     }
 
     void Update()
@@ -43,11 +43,11 @@ public class b1Organ4 : MonoBehaviour
             {
                 if (transform.position.x < boss1.transform.position.x)
                 {
-                    rb.velocity = new Vector2(organWalkSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(organWalkSpeed, rb.linearVelocity.y);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-organWalkSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-organWalkSpeed, rb.linearVelocity.y);
                 }
             }
 
@@ -95,7 +95,7 @@ public class b1Organ4 : MonoBehaviour
                 {
                     moveDirection = (boss1.transform.position - transform.position).normalized * organFireSpeed;
                     walking = true;
-                    rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+                    rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
                 }
             }
 
@@ -114,13 +114,13 @@ public class b1Organ4 : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             hitGround = true;
-            rb.velocity = new Vector2(0, 0);
+            rb.linearVelocity = new Vector2(0, 0);
         }
 
         if (collision.gameObject.tag == "b1BloodPuddle")
         {
             hitGround = true;
-            rb.velocity = new Vector2(0, 0);
+            rb.linearVelocity = new Vector2(0, 0);
         }
 
         if (collision.gameObject.tag == "boss1")

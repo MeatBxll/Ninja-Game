@@ -16,11 +16,11 @@ public class VenomGlob : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (transform.position.x < boss4.transform.position.x)
         {
-            rb.velocity = new Vector2(-horizontalForce, upForce);
+            rb.linearVelocity = new Vector2(-horizontalForce, upForce);
         }
         else
         {
-            rb.velocity = new Vector2(horizontalForce, upForce);
+            rb.linearVelocity = new Vector2(horizontalForce, upForce);
         }
         
     }

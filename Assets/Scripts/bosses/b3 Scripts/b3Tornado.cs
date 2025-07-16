@@ -14,6 +14,6 @@ public class b3Tornado : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         moveDirection = (player.transform.position - transform.position).normalized * speed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
     }
 }

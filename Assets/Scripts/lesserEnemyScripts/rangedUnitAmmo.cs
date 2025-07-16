@@ -36,7 +36,7 @@ public class rangedUnitAmmo : MonoBehaviour
         }
 
         moveDirection = (player.transform.position - transform.position).normalized * speed;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(moveDirection.x, moveDirection.y);
+        GetComponent<Rigidbody2D>().linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
         Destroy(gameObject, 3);
     }
 

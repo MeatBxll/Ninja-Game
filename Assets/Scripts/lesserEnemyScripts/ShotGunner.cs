@@ -54,7 +54,7 @@ public class ShotGunner : MonoBehaviour
             nextFire = Time.time + fireRate;
         }
 
-        rb.velocity = new Vector2(-roamSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(-roamSpeed, rb.linearVelocity.y);
         RaycastHit2D groundInfo = Physics2D.Raycast(new Vector2(transform.position.x - groundDetectDistance, transform.position.y - transform.localScale.y / 2 + .1f), Vector2.down, 10);
         if (groundInfo.collider == false)
         {

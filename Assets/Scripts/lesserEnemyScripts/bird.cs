@@ -12,7 +12,7 @@ public class bird : MonoBehaviour
     void Update()
     {
 
-        GetComponent<Rigidbody2D>().velocity = -transform.right * speed;
+        GetComponent<Rigidbody2D>().linearVelocity = -transform.right * speed;
 
         if (switch1 < Time.time)
         {

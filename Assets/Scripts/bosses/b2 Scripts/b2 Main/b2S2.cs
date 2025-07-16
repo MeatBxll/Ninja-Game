@@ -178,11 +178,11 @@ public class b2S2 : MonoBehaviour
                 Debug.Log("working");
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(runsAtPlayerSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(runsAtPlayerSpeed, rb.linearVelocity.y);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-runsAtPlayerSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-runsAtPlayerSpeed, rb.linearVelocity.y);
                 }
             }
 
@@ -211,11 +211,11 @@ public class b2S2 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-walkSpeed, rb.linearVelocity.y);
             }
         }
 

@@ -193,11 +193,11 @@ public class boss4S2 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(JumpSpeed, JumpHeight);
+                rb.linearVelocity = new Vector2(JumpSpeed, JumpHeight);
             }
             else
             {
-                rb.velocity = new Vector2(-JumpSpeed, JumpHeight);
+                rb.linearVelocity = new Vector2(-JumpSpeed, JumpHeight);
             }
             
             Instantiate(spiderWebOne, new Vector2(transform.position.x, transform.position.y), transform.rotation);
@@ -229,12 +229,12 @@ public class boss4S2 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(runsAtSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(runsAtSpeed, rb.linearVelocity.y);
                 playerPosition = 1;
             }
             else
             {
-                rb.velocity = new Vector2(-runsAtSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-runsAtSpeed, rb.linearVelocity.y);
                 playerPosition = 2;
             }
             onlyOnce = true;
@@ -247,7 +247,7 @@ public class boss4S2 : MonoBehaviour
             {
                 if (transform.position.x > player.transform.position.x + runPastDistance)
                 {
-                    rb.velocity = new Vector2(-runsAtSpeed / 2, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-runsAtSpeed / 2, rb.linearVelocity.y);
                     playerPosition = 0;
                     Invoke("ResetBoss", runBackDurration);
                 }
@@ -256,7 +256,7 @@ public class boss4S2 : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x - runPastDistance)
                 {
-                    rb.velocity = new Vector2(runsAtSpeed / 2, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(runsAtSpeed / 2, rb.linearVelocity.y);
                     playerPosition = 0;
                     Invoke("ResetBoss", runBackDurration);
                 }
@@ -289,13 +289,13 @@ public class boss4S2 : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(afterShootSpeed, afterShootHeight);
+                    rb.linearVelocity = new Vector2(afterShootSpeed, afterShootHeight);
                     afterShotHolder = afterShotDurration + Time.time;
                     timeBetweenHolder = 0;
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-afterShootSpeed, afterShootHeight);
+                    rb.linearVelocity = new Vector2(-afterShootSpeed, afterShootHeight);
                     afterShotHolder = afterShotDurration + Time.time;
                     timeBetweenHolder = 0;
 
@@ -308,7 +308,7 @@ public class boss4S2 : MonoBehaviour
         {
             if(afterShotHolder < Time.time)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 afterShotHolder = 0;
                 ResetBoss();
             }
@@ -329,11 +329,11 @@ public class boss4S2 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(layRunSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(layRunSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-layRunSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-layRunSpeed, rb.linearVelocity.y);
             }
 
             layRunHolder = layRunDurration + Time.time;
@@ -344,7 +344,7 @@ public class boss4S2 : MonoBehaviour
         {
             if(layRunHolder < Time.time)
             {
-                rb.velocity = new Vector2(0, jumpOffHeight);
+                rb.linearVelocity = new Vector2(0, jumpOffHeight);
                 Instantiate(egg, transform.position, transform.rotation);
                 layRunHolder = 0;
 
@@ -366,7 +366,7 @@ public class boss4S2 : MonoBehaviour
             if (jumpOffDurrationHolder < Time.time)
             {
                 jumpOffHolder = 0;
-                rb.velocity = new Vector2(0, -downForceAfter);
+                rb.linearVelocity = new Vector2(0, -downForceAfter);
                 jumpOffDurrationHolder = 0;
                 Invoke("ResetBoss", downDurrationAfter);
             }
@@ -382,11 +382,11 @@ public class boss4S2 : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 

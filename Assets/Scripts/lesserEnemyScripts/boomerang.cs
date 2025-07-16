@@ -27,7 +27,7 @@ public class boomerang : MonoBehaviour
             if (Mathf.Abs(transform.position.x - startX) > maxDis)
             {
                 Vector2 moveDirection = (ranger.position - transform.position).normalized * speed;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(moveDirection.x, moveDirection.y);
+                GetComponent<Rigidbody2D>().linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
             }
         }
     }

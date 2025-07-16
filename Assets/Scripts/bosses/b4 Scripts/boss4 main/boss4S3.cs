@@ -237,14 +237,14 @@ public class boss4S3 : MonoBehaviour
             if (transform.position.x < player.transform.position.x)
             {
                 Instantiate(spiderWebFour, new Vector2(transform.position.x + 1, transform.position.y + 1), transform.rotation);
-                rb.velocity = new Vector2(initialRunSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(initialRunSpeed, rb.linearVelocity.y);
                 pRight = 1;
                 //one means player is on the right 2 means player is on the left
             }
             else
             {
                 Instantiate(spiderWebFour, new Vector2(transform.position.x - 1, transform.position.y + 1), transform.rotation);
-                rb.velocity = new Vector2(-initialRunSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-initialRunSpeed, rb.linearVelocity.y);
                 pRight = 2;
                 //one means player is on the right 2 means player is on the left
             }
@@ -279,11 +279,11 @@ public class boss4S3 : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(leapSpeed, leapJumpForce);
+                    rb.linearVelocity = new Vector2(leapSpeed, leapJumpForce);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-leapSpeed, leapJumpForce);
+                    rb.linearVelocity = new Vector2(-leapSpeed, leapJumpForce);
                 }
                 leapHolder = Time.time + leapDurration;
                 initialHolder = 0;
@@ -294,7 +294,7 @@ public class boss4S3 : MonoBehaviour
         {
             if (leapHolder < Time.time)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
 
                 leapHolder = 0;
                 ResetBoss();
@@ -317,7 +317,7 @@ public class boss4S3 : MonoBehaviour
         if(onlyOnce == false)
         {
 
-            rb.velocity = new Vector2(0, jumpHeight);
+            rb.linearVelocity = new Vector2(0, jumpHeight);
             
             jumpTimeHolder = Time.time + jumpTime;
 
@@ -329,7 +329,7 @@ public class boss4S3 : MonoBehaviour
         {
             if (jumpTimeHolder < Time.time)
             {
-                rb.velocity = new Vector2(0,0);
+                rb.linearVelocity = new Vector2(0,0);
                 if (transform.position.x < player.transform.position.x)
                 {
                     Instantiate(venomGlob, new Vector2(transform.position.x + 2, transform.position.y), transform.rotation);
@@ -349,11 +349,11 @@ public class boss4S3 : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(dashSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(dashSpeed, rb.linearVelocity.y);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-dashSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-dashSpeed, rb.linearVelocity.y);
                 }
                 dashTimeHolder = 0;
                 dashDurrationHolder = dashDurration + Time.time;
@@ -365,7 +365,7 @@ public class boss4S3 : MonoBehaviour
         {
             if(dashDurrationHolder < Time.time)
             {
-                rb.velocity = new Vector2(0,0);
+                rb.linearVelocity = new Vector2(0,0);
                 ResetBoss();
             }
         }
@@ -380,11 +380,11 @@ public class boss4S3 : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 

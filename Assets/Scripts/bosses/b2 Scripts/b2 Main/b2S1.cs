@@ -150,7 +150,7 @@ public class b2S1 : MonoBehaviour
             if (onlyOnce == false)
             {
                 moveDirection = (player.transform.position - transform.position).normalized * dashThroughSpeed;
-                rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+                rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
 
                 turnBackHolder = Time.time + turnBackTime;
 
@@ -163,7 +163,7 @@ public class b2S1 : MonoBehaviour
                 {
                     happensAfter = true;
                     moveDirection = (mask.transform.position - transform.position).normalized * turnBackSpeed;
-                    rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+                    rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
                     resetHolder = resetTime + Time.time;
 
                     turnBackHolder = 0;
@@ -200,7 +200,7 @@ public class b2S1 : MonoBehaviour
             {
                 if (ninjaStarJumpHolder < Time.time)
                 {
-                    rb.velocity = new Vector2(0, 0);
+                    rb.linearVelocity = new Vector2(0, 0);
                     if (transform.position.x < player.transform.position.x)
                     {
                         Instantiate(ninjaStar, new Vector2(rightBarrelEnd.transform.position.x, rightBarrelEnd.transform.position.y - 2), barrelEnd.transform.rotation);
@@ -252,11 +252,11 @@ public class b2S1 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-walkSpeed, rb.linearVelocity.y);
             }
         }
 
@@ -317,11 +317,11 @@ public class b2S1 : MonoBehaviour
                 {
                     if (transform.position.x < mask.transform.position.x)
                     {
-                        rb.velocity = new Vector2(-runBackSpeed, 0);
+                        rb.linearVelocity = new Vector2(-runBackSpeed, 0);
                     }
                     else
                     {
-                        rb.velocity = new Vector2(runBackSpeed, 0);
+                        rb.linearVelocity = new Vector2(runBackSpeed, 0);
                     }
                     resetHolder = s1DashThroughResetTime + Time.time;
                     Destroy(GameObject.FindWithTag("b2OniMask"), 0);

@@ -124,7 +124,7 @@ public class boss3S1 : MonoBehaviour
         {
             if(dragonHolder < Time.time)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 dragonHolder = 0;
                 reset = false;
             }
@@ -155,11 +155,11 @@ public class boss3S1 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(dragonFlySpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(dragonFlySpeed, rb.linearVelocity.y);
             }
             else
             { 
-                rb.velocity = new Vector2(-dragonFlySpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-dragonFlySpeed, rb.linearVelocity.y);
             }
         }
 
@@ -210,7 +210,7 @@ public class boss3S1 : MonoBehaviour
         {
             if (humanHolder2 < Time.time)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 humanHolder2 = 0;
                 reset = false;
             }
@@ -237,11 +237,11 @@ public class boss3S1 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(humanWalkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(humanWalkSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-humanWalkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-humanWalkSpeed, rb.linearVelocity.y);
             }
         }
 

@@ -19,12 +19,12 @@ public class web4 : MonoBehaviour
         {
             if (transform.position.x < boss4.transform.position.x)
             {
-                rb.velocity = new Vector2(-speed, height);
+                rb.linearVelocity = new Vector2(-speed, height);
 
             }
             else
             {
-                rb.velocity = new Vector2(speed, height);
+                rb.linearVelocity = new Vector2(speed, height);
             }
         }
         Destroy(gameObject, destryTime);
@@ -32,7 +32,7 @@ public class web4 : MonoBehaviour
     }
     void freeze()
     {
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
     }
 }

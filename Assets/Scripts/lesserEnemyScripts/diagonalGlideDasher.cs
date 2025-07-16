@@ -60,28 +60,28 @@ public class diagonalGlideDasher : MonoBehaviour
                 {
                     if (transform.position.x < player.transform.position.x)
                     {
-                        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                        rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
                     }
                     else
                     {
-                        rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+                        rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
                     }
 
                     if (!onlyOnce)
                     {
                         rb.gravityScale = gravityScale;
-                        rb.velocity = new Vector2(rb.velocity.x, -diveSpeed);
+                        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -diveSpeed);
                         onlyOnce = true;
                     }
                 }
                 else
                 {
-                    rb.velocity = new Vector2(roamSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(roamSpeed, rb.linearVelocity.y);
                 }
             }
             else
             {
-                rb.velocity = new Vector2(roamSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(roamSpeed, rb.linearVelocity.y);
             }
         }
     }

@@ -160,11 +160,11 @@ public class SBoss3 : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed , rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed , rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 
@@ -173,7 +173,7 @@ public class SBoss3 : MonoBehaviour
         //one ability where he slams down and goes randomly left or right
         if (onlyOnce == false)
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.linearVelocity = new Vector2(0, 0);
             transform.position = new Vector2(player.transform.position.x, player.transform.position.y + topMidHeight);
             rb.AddForce(Vector2.up * 100);
             slamTimeHolder = Time.time +1;
@@ -199,7 +199,7 @@ public class SBoss3 : MonoBehaviour
         //one ability where he hurls a large projectile that explodes and ripple effect on the ground
         if (onlyOnce == false)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             meteorRandom = Random.Range(1, 3);
             onlyOnce = true;
 
@@ -238,7 +238,7 @@ public class SBoss3 : MonoBehaviour
         {
             if(onlyOnce == false)
             {
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
                 randomSpot = Random.Range(1, 5);
                 teleportCurrentAmount = teleportCurrentAmount + 1;
                 onlyOnce = true;

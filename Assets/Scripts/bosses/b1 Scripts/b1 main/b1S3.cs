@@ -124,7 +124,7 @@ public class b1S3 : MonoBehaviour
             if (stageThreeStartingJumpHolder < Time.time)
             {
                 resetBoss = false;
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 stageThreeStartingJumpHolder = 0;
             }
         }
@@ -319,11 +319,11 @@ public class b1S3 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(floatSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(floatSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-floatSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-floatSpeed, rb.linearVelocity.y);
             }
         }
 

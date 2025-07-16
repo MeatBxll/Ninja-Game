@@ -237,11 +237,11 @@ public class b5S3 : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 

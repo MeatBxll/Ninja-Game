@@ -76,7 +76,7 @@ public class HorizThrust : MonoBehaviour
         if (thrustTime <= 0 && thrustAvailable == false)     //executes after thrust is complete (Timer) resets everything and starts thrust timer
         {
             thrustTime = startThrustTime;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             thrustAvailable = true;
             rightThrust = false;
             leftThrust = false;
@@ -91,12 +91,12 @@ public class HorizThrust : MonoBehaviour
 
             if (rightThrust == true)
             {
-                rb.velocity = Vector2.right * thrustSpeed;
+                rb.linearVelocity = Vector2.right * thrustSpeed;
             }
 
             if (leftThrust == true)
             {
-                rb.velocity = Vector2.left * thrustSpeed;
+                rb.linearVelocity = Vector2.left * thrustSpeed;
             }
 
 

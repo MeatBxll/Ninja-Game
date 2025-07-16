@@ -34,7 +34,7 @@ public class boomerRanger : MonoBehaviour
             nextFire = Time.time + fireRate;
         }
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-roamSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().linearVelocity = new Vector2(-roamSpeed, GetComponent<Rigidbody2D>().linearVelocity.y);
         RaycastHit2D groundInfo = Physics2D.Raycast(new Vector2(transform.position.x - groundDetectDistance, transform.position.y - transform.localScale.y / 2 + .1f), Vector2.down, 10);
         if (groundInfo.collider == false)
         {

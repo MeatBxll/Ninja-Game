@@ -19,7 +19,7 @@ public class enemyBullet : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
 
         if(Time.time > timeDelay) { gracePeriod = true; }
         Destroy(gameObject, 5);

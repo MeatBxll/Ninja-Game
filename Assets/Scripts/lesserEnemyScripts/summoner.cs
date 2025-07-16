@@ -78,20 +78,20 @@ public class summoner : MonoBehaviour
             {
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
                     shootDistance = 4;
                     currentAngle = 0;
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+                    rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
                     shootDistance = -4;
                     currentAngle = 180;
                 }
             }
             else
             {
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             }
         }
     }

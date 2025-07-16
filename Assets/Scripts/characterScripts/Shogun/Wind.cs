@@ -23,7 +23,7 @@ public class Wind : MonoBehaviour
     void Update()
     {
            
-        rb.velocity = transform.right * speed;
+        rb.linearVelocity = transform.right * speed;
              
     }
 

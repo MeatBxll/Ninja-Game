@@ -15,11 +15,11 @@ public class b1BatCluster : MonoBehaviour
 
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(flySpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(flySpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-flySpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-flySpeed, rb.linearVelocity.y);
         }
         Destroy(gameObject, batDurration);
     }

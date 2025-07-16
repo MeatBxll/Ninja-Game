@@ -144,7 +144,7 @@ public class b1S2 : MonoBehaviour
         {
             if (onlyOnce == false)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 Instantiate(batCluster, normalBarrelEnd.transform.position, normalBarrelEnd.rotation);
 
                 resetHolder = sendBatsResetTime + Time.time;
@@ -187,11 +187,11 @@ public class b1S2 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-walkSpeed, rb.linearVelocity.y);
             }
         }
 
@@ -253,7 +253,7 @@ public class b1S2 : MonoBehaviour
 
 
             //reset velocity
-            rb.velocity = new Vector2(0, 0);
+            rb.linearVelocity = new Vector2(0, 0);
 
 
             //set stage

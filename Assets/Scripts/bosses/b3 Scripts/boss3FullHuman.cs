@@ -49,7 +49,7 @@ public class boss3FullHuman : MonoBehaviour
         GetComponent<Health>().GainHealth(-1);
 
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         BossSetup();
 
         humanFormCollision = true;
@@ -144,11 +144,11 @@ public class boss3FullHuman : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(slashSpeed, 0);
+                rb.linearVelocity = new Vector2(slashSpeed, 0);
             }
             else
             {
-                rb.velocity = new Vector2(-slashSpeed, 0);
+                rb.linearVelocity = new Vector2(-slashSpeed, 0);
             }
 
             Invoke("AbilityOneStageTwo", slashDurration);
@@ -162,7 +162,7 @@ public class boss3FullHuman : MonoBehaviour
     void AbilityOneStageTwo()
     { 
         Debug.Log("working");
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         BossReset();
         CancelInvoke();
     }
@@ -210,11 +210,11 @@ public class boss3FullHuman : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(dashSpeed, 0);
+                rb.linearVelocity = new Vector2(dashSpeed, 0);
             }
             else
             {
-                rb.velocity = new Vector2(-dashSpeed, 0);
+                rb.linearVelocity = new Vector2(-dashSpeed, 0);
             }
             
             Invoke("AbilityThreeStageTwo", dashDurration);
@@ -225,7 +225,7 @@ public class boss3FullHuman : MonoBehaviour
 
     void AbilityThreeStageTwo()
     {
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         BossReset();
         CancelInvoke();
     }
@@ -237,11 +237,11 @@ public class boss3FullHuman : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 
@@ -262,7 +262,7 @@ public class boss3FullHuman : MonoBehaviour
 
         //Reset Usual
         Debug.Log("resetBoss");
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         onlyOnce = false;
         chasePlayer = true;
         resetHolder = chaseDurration + Time.time;
@@ -283,7 +283,7 @@ public class boss3FullHuman : MonoBehaviour
         {
             if (setupOnlyOnce == false)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
                 setupOnlyOnce = true;
                 BossReset();
                 rb.gravityScale = 1;
@@ -314,7 +314,7 @@ public class boss3FullHuman : MonoBehaviour
     void BossSetupStageTwo()
     {
         transform.position = new Vector2(transform.position.x, transform.position.y+1);
-        rb.velocity = new Vector2(0, -setupDownSpeed);
+        rb.linearVelocity = new Vector2(0, -setupDownSpeed);
         CancelInvoke();
     }
 

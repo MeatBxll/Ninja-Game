@@ -17,7 +17,7 @@ public class meteor : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         moveDirection = (player.transform.position - transform.position).normalized * bulletSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

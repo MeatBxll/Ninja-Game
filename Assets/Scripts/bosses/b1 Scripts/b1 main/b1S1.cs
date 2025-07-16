@@ -154,11 +154,11 @@ public class b1S1 : MonoBehaviour
                 moveDirection = (player.transform.position - transform.position).normalized * slamSwordSlamSpeed;
                 if (transform.position.x < player.transform.position.x)
                 {
-                    rb.velocity = new Vector2(moveDirection.x - swordSize, moveDirection.y);
+                    rb.linearVelocity = new Vector2(moveDirection.x - swordSize, moveDirection.y);
                 }
                 else
                 {
-                    rb.velocity = new Vector2(moveDirection.x + swordSize, moveDirection.y);
+                    rb.linearVelocity = new Vector2(moveDirection.x + swordSize, moveDirection.y);
                 }
 
 
@@ -199,17 +199,17 @@ public class b1S1 : MonoBehaviour
             {
                 onlyOnce = true;
                 resetHolder = playerGrabResetTime + Time.time;
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
 
                 playerRb = player.GetComponent<Rigidbody2D>();
 
                 if (transform.position.x < player.transform.position.x)
                 {
-                    playerRb.velocity = new Vector2(-grabForce, playerRb.velocity.y);
+                    playerRb.linearVelocity = new Vector2(-grabForce, playerRb.linearVelocity.y);
                 }
                 else
                 {
-                    playerRb.velocity = new Vector2(grabForce, playerRb.velocity.y);
+                    playerRb.linearVelocity = new Vector2(grabForce, playerRb.linearVelocity.y);
                 }
             }
 
@@ -225,11 +225,11 @@ public class b1S1 : MonoBehaviour
         {
             if (transform.position.x < player.transform.position.x)
             {
-                rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-walkSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-walkSpeed, rb.linearVelocity.y);
             }
         }
 

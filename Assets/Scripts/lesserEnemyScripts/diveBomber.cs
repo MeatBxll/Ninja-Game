@@ -62,12 +62,12 @@ public class diveBomber : MonoBehaviour
                     }
                 }
 
-                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
 
             }
             else
             {
-                rb.velocity = new Vector2(0, -dropSpeed);
+                rb.linearVelocity = new Vector2(0, -dropSpeed);
             }
         }
 

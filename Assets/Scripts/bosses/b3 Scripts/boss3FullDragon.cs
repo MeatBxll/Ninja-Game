@@ -57,7 +57,7 @@ public class boss3FullDragon : MonoBehaviour
         GetComponent<Health>().GainHealth(-1);
 
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         BossSetup();
         dragonFormCollision = true;
     }
@@ -179,11 +179,11 @@ public class boss3FullDragon : MonoBehaviour
 
         if (flyByHolder == 1)
         {
-            rb.velocity = new Vector2(moveDirection.x - flyAwayDistance, moveDirection.y + heightOffGround);
+            rb.linearVelocity = new Vector2(moveDirection.x - flyAwayDistance, moveDirection.y + heightOffGround);
         }
         else
         {
-            rb.velocity = new Vector2(moveDirection.x + flyAwayDistance, moveDirection.y + heightOffGround);
+            rb.linearVelocity = new Vector2(moveDirection.x + flyAwayDistance, moveDirection.y + heightOffGround);
         }
     }
 
@@ -212,7 +212,7 @@ public class boss3FullDragon : MonoBehaviour
 
     void AbilityThreeStageTwo()
     {
-        rb.velocity = new Vector2(0, jumpSpeed);
+        rb.linearVelocity = new Vector2(0, jumpSpeed);
         Invoke("BossReset", jumpDurration);
     }
 
@@ -230,11 +230,11 @@ public class boss3FullDragon : MonoBehaviour
     {
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
         }
     }
 
@@ -255,7 +255,7 @@ public class boss3FullDragon : MonoBehaviour
 
         //Reset Usual
         Debug.Log("resetBoss");
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         onlyOnce = false;
         chasePlayer = true;
         resetHolder = chaseDurration + Time.time;

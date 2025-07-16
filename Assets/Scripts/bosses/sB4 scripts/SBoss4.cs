@@ -183,11 +183,11 @@ public class SBoss4 : MonoBehaviour
 
         if (transform.position.x < player.transform.position.x)
         {
-            rb.velocity = new Vector2(floatSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(floatSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(-floatSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-floatSpeed, rb.linearVelocity.y);
         }
     }
 
@@ -238,11 +238,11 @@ public class SBoss4 : MonoBehaviour
 
         if (transform.position.x < player.transform.position.x)
         {
-            playerRb.velocity = new Vector2(windForce, playerRb.velocity.y);
+            playerRb.linearVelocity = new Vector2(windForce, playerRb.linearVelocity.y);
         }
         else
         {
-            playerRb.velocity = new Vector2(-windForce, playerRb.velocity.y);
+            playerRb.linearVelocity = new Vector2(-windForce, playerRb.linearVelocity.y);
         }
 
 
