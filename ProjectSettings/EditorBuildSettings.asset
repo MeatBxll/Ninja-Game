@@ -23,4 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/meeting stuff/main Menu/Level 5.unity
     guid: d55f74b5920e5a647aa4d160fbe82a4b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 296c21c6a615d5f499161b7d4992cd34, type: 3}
+  m_UseUCBPForAssetBundles: 0

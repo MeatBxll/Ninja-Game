@@ -13,7 +13,7 @@ public class playerRanged : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot)
+        if (UserInput.instance.attackInput && canShoot)
             StartCoroutine(HandleFire());
     }
 

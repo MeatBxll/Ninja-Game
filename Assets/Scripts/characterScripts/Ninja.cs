@@ -7,12 +7,11 @@ public class Ninja : MonoBehaviour
     [SerializeField] private float abilityDurration;
     [SerializeField] private float abilityCooldown;
     private bool abilityOffCD = true;
-    [NonSerialized] public KeyCode AbilityButton = KeyCode.Q;
     private bool isUsingAbility;
 
     void Update()
     {
-        if (Input.GetKeyDown(AbilityButton) && abilityOffCD)
+        if (UserInput.instance.abilityOneInput && abilityOffCD)
             StartCoroutine(HandleAbility());
 
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-
     public float movementSpeed;
     [SerializeField] private float jumpMultiplier;
     [SerializeField] private float dashSpeed;
@@ -17,9 +16,6 @@ public class playerMovement : MonoBehaviour
     private bool canJump;
     private bool isGrounded;
     private CapsuleCollider2D myCollider;
-
-    [NonSerialized] public KeyCode jumpButton = KeyCode.Space;
-    [NonSerialized] public KeyCode dashButton = KeyCode.LeftShift;
 
     void Start()
     {
@@ -34,14 +30,14 @@ public class playerMovement : MonoBehaviour
             HandleJump();
             HandleMovement();
 
-            if (Input.GetKeyDown(dashButton) && !isDashing)
+            if (UserInput.instance.dashInput && !isDashing)
                 StartCoroutine(HandleDash());
         }
     }
 
     void HandleJump()
     {
-        if (Input.GetKeyDown(jumpButton))
+        if (UserInput.instance.jumpInput)
         {
             if (canJump)
             {
