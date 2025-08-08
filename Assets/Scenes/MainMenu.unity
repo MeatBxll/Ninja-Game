@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &23823922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7419,7 +7419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &790041324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8548,6 +8548,7 @@ MonoBehaviour:
   - {fileID: 1359568001}
   - {fileID: 1006729623}
   - {fileID: 835899036}
+  pressAnyButtonBackground: {fileID: 23823921}
 --- !u!1 &1329791839
 GameObject:
   m_ObjectHideFlags: 0

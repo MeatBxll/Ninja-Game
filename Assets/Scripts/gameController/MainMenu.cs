@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject[] Menus;
     private gameController gameController;
+    private InputAction anyButtonAction;
     [SerializeField] private GameObject pressAnyButtonBackground;
     void Start()
     {
@@ -34,7 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartListening()
     {
-        InputAction anyButtonAction = new InputAction(
+        anyButtonAction = new InputAction(
             name: "AnyButton",
             type: InputActionType.Button,
             binding: "<Keyboard>/anyKey"
@@ -52,10 +53,16 @@ public class MainMenu : MonoBehaviour
         {
             ChooseMenu(0);
             pressAnyButtonBackground.SetActive(false);
+            StopListening();
         };
 
         anyButtonAction.Enable();
     }
 
+    private void StopListening()
+    {
+        anyButtonAction.Disable();
+        anyButtonAction = null;
+    }
 }
 
