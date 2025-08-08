@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 public class MainMenu : MonoBehaviour
 {
     public GameObject[] Menus;
     private gameController gameController;
+    [SerializeField] private GameObject pressAnyButtonBackground;
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        StartListening();
     }
+
 
     public void ChooseMenu(int m)
     {
@@ -17,6 +21,7 @@ public class MainMenu : MonoBehaviour
             i.SetActive(false);
         Menus[m].SetActive(true);
     }
+
 
     public void ChooseYourCharacter(int i)
     {
@@ -26,4 +31,31 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void StartListening()
+    {
+        InputAction anyButtonAction = new InputAction(
+            name: "AnyButton",
+            type: InputActionType.Button,
+            binding: "<Keyboard>/anyKey"
+        );
+
+        anyButtonAction.AddBinding("<Mouse>/leftButton");
+        anyButtonAction.AddBinding("<Mouse>/rightButton");
+        anyButtonAction.AddBinding("<Gamepad>/*");
+        anyButtonAction.AddBinding("<Mouse>/leftButton");
+        anyButtonAction.AddBinding("<Mouse>/rightButton");
+        anyButtonAction.AddBinding("<Mouse>/middleButton");
+        anyButtonAction.AddBinding("<Mouse>/backButton");
+        anyButtonAction.AddBinding("<Mouse>/forwardButton");
+        anyButtonAction.performed += ctx =>
+        {
+            ChooseMenu(0);
+            pressAnyButtonBackground.SetActive(false);
+        };
+
+        anyButtonAction.Enable();
+    }
+
 }
+
