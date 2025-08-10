@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class MapPlayer : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    [NonSerialized] public gameController gameController;
     private Rigidbody2D rb;
     void Start()
     {

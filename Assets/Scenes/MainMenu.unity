@@ -26222,6 +26222,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: gameController
       objectReference: {fileID: 0}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: allMapPlayerCharacters.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: 'allMapPlayerCharacters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1371129466062915024, guid: b483e35ef26b4bf4f99f8a6fb57e1c2d, type: 3}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: 'allMapPlayerCharacters.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1371129466062915024, guid: b483e35ef26b4bf4f99f8a6fb57e1c2d, type: 3}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: 'allMapPlayerCharacters.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1371129466062915024, guid: b483e35ef26b4bf4f99f8a6fb57e1c2d, type: 3}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: 'allMapPlayerCharacters.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1371129466062915024, guid: b483e35ef26b4bf4f99f8a6fb57e1c2d, type: 3}
+    - target: {fileID: 6047421440246951587, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
+      propertyPath: 'allMapPlayerCharacters.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1371129466062915024, guid: b483e35ef26b4bf4f99f8a6fb57e1c2d, type: 3}
     - target: {fileID: 8764821107879948969, guid: ac52956b8d2e97e40a544b584f66d8a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.45681018

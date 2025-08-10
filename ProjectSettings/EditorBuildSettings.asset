@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/map.unity
     guid: cbb6b9d8b6630034f9258f7510d200fb
+  - enabled: 1
+    path: Assets/Scenes/VillageArea/VillageClear.unity
+    guid: 9d7a5e24ab6e38b4f8f1f4a47a759ed1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 296c21c6a615d5f499161b7d4992cd34, type: 3}
   m_UseUCBPForAssetBundles: 0

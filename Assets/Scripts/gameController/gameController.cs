@@ -1,15 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class gameController : MonoBehaviour
 {
     [SerializeField] private GameObject[] allPlayerCharacters;
+    [SerializeField] private GameObject[] allMapPlayerCharacters;
     [NonSerialized] public int currentPlayerCharacterIndex;
-    private GameObject currentPlayerInstance;
-    private Transform playerSpawn;
+    [NonSerialized] public GameObject currentPlayerInstance;
+    [NonSerialized] public Vector3 playerSpawn = new Vector3(-110, 22, 1);
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -21,9 +20,16 @@ public class gameController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void SceneLoaded(Transform spawn)
+    public void SceneLoaded(bool IsMap)
     {
-        playerSpawn = spawn;
-        currentPlayerInstance = Instantiate(allPlayerCharacters[currentPlayerCharacterIndex], spawn);
+        if (IsMap)
+        {
+            currentPlayerInstance = Instantiate(allMapPlayerCharacters[currentPlayerCharacterIndex], playerSpawn, Quaternion.identity);
+            currentPlayerInstance.GetComponent<MapPlayer>().gameController = gameObject.GetComponent<gameController>();
+        }
+        else
+        {
+            currentPlayerInstance = Instantiate(allPlayerCharacters[currentPlayerCharacterIndex], playerSpawn, Quaternion.identity);
+        }
     }
 }
