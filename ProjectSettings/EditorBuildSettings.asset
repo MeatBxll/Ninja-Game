@@ -6,23 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/meeting stuff/main Menu/Title Screen.unity
-    guid: c2eea7fe0aabb3c499f20e141a966a03
+    path: Assets/Scenes/MainMenu.unity
+    guid: 08c1c23189492d541b66629cc3420fed
   - enabled: 1
-    path: Assets/Tony/map/mainMenu/lvl1.unity
-    guid: 33da0f101e65c304bbcb7822017e58e3
-  - enabled: 1
-    path: Assets/Tony/map/mainMenu/lvl2.unity
-    guid: da81b27d7d56cd047af3ef75ddb1cfd5
-  - enabled: 1
-    path: Assets/Tony/map/mainMenu/lvl3.unity
-    guid: 4d7866bf75cb3cb4b92848119afabeed
-  - enabled: 1
-    path: Assets/meeting stuff/main Menu/Level 4.unity
-    guid: 9b9f1e3b2736b814a9a7940afd80684f
-  - enabled: 1
-    path: Assets/meeting stuff/main Menu/Level 5.unity
-    guid: d55f74b5920e5a647aa4d160fbe82a4b
+    path: Assets/Scenes/map.unity
+    guid: cbb6b9d8b6630034f9258f7510d200fb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 296c21c6a615d5f499161b7d4992cd34, type: 3}
   m_UseUCBPForAssetBundles: 0
