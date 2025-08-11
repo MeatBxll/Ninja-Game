@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private TMP_Text LevelTitle;
     [SerializeField] private LevelPlate[] levelPlates;
     private gameController gameController;
-
+    [SerializeField] private GameObject startRoomDoor;
     private int currentLevelIndex;
     void Start()
     {
@@ -21,12 +21,22 @@ public class SceneLoader : MonoBehaviour
 
         gameController = GameObject.FindWithTag("GameController").GetComponent<gameController>();
         gameController.SceneLoaded(true);
+
+        // make all the initial map details based on game progress here
+        foreach (int i in gameController.completedLevelIndexes)
+        {
+            if (i == 2)
+            {
+                startRoomDoor.SetActive(false);
+            }
+        }
     }
 
     public void HoveringLevel(GameObject levelPlate)
     {
         LevelTitle.text = levelPlate.name;
         currentLevelIndex = levelPlate.GetComponent<LevelPlate>().sceneIndex;
+        gameController.playerSpawn = new Vector3(levelPlate.transform.position.x, levelPlate.transform.position.y, 1);
         SceneUi.SetActive(true);
     }
 
@@ -43,6 +53,7 @@ public class SceneLoader : MonoBehaviour
         {
             Destroy(col);
         }
+        gameController.currentLevelIndex = currentLevelIndex;
         SceneManager.LoadScene(currentLevelIndex);
     }
 }
