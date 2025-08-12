@@ -13,17 +13,22 @@ public class gameController : MonoBehaviour
     [NonSerialized] public Vector3 mapSpawn = new Vector3(-110, 22, 1);
     [NonSerialized] public int sceneIndex;
     [NonSerialized] public int currentLevelIndex;
-    [NonSerialized] public List<int> completedLevelIndexes;
+    [NonSerialized] public static gameController Instance;
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        completedLevelIndexes = new List<int>();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
-
     public void LoadMap(int i)
     {
-        currentPlayerCharacterIndex = i;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(i);
     }
 
     public void SceneLoaded(bool IsMap)
@@ -41,7 +46,7 @@ public class gameController : MonoBehaviour
 
     public void LevelCompleted()
     {
-        completedLevelIndexes.Add(currentLevelIndex);
-        LoadMap(currentPlayerCharacterIndex);
+        gameObject.GetComponent<LevelProgress>().MarkLevelComplete(currentLevelIndex);
+        LoadMap(1);
     }
 }

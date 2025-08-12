@@ -33,6 +33,20 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void LoadMap(int i)
+    {
+        gameController.currentPlayerCharacterIndex = i;
+        gameController.GetComponent<LevelProgress>().saveSlot = i;
+        gameController.GetComponent<LevelProgress>().LoadProgress();
+        gameController.LoadMap(1);
+    }
+
+    public void DeleteSave(int index)
+    {
+        gameController.GetComponent<LevelProgress>().saveSlot = index;
+        gameController.GetComponent<LevelProgress>().ResetProgress();
+    }
+
     public void StartListening()
     {
         anyButtonAction = new InputAction(
@@ -64,5 +78,6 @@ public class MainMenu : MonoBehaviour
         anyButtonAction.Disable();
         anyButtonAction = null;
     }
+
 }
 

@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VillageArea/VillageClear.unity
     guid: 9d7a5e24ab6e38b4f8f1f4a47a759ed1
+  - enabled: 1
+    path: Assets/Scenes/VillageArea/TreeTops.unity
+    guid: 8e2520a7ceb9a5641b6d0fedd19fae2b
+  - enabled: 1
+    path: Assets/Scenes/VillageArea/HoleInTheWall.unity
+    guid: 50a1837f6e1ceaa4ca3b35491a0923d8
+  - enabled: 1
+    path: Assets/Scenes/VillageArea/ClearingTheWell.unity
+    guid: 067d2d10c9cb0f74292a2449c928b316
+  - enabled: 1
+    path: Assets/Scenes/VillageArea/TreeArchWay.unity
+    guid: 6541841c0eceab04b93d01cad3c72d23
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 296c21c6a615d5f499161b7d4992cd34, type: 3}
   m_UseUCBPForAssetBundles: 0
