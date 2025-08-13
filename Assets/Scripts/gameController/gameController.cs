@@ -14,6 +14,8 @@ public class gameController : MonoBehaviour
     [NonSerialized] public int sceneIndex;
     [NonSerialized] public int currentLevelIndex;
     [NonSerialized] public static gameController Instance;
+
+    [NonSerialized] public bool firstLoad = true;
     void Awake()
     {
         if (Instance == null)

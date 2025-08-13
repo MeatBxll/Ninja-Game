@@ -14,7 +14,6 @@ public class pauseMenu : MonoBehaviour
     [SerializeField] private GameObject[] allLevelCheckMarks;
     private bool gameIsPaused = false;
     private int currentLevelIndex;
-    [NonSerialized] public KeyCode pauseButton = KeyCode.Escape;
 
     void Start()
     {
@@ -29,7 +28,7 @@ public class pauseMenu : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(pauseButton))
+        if (UserInput.instance.pauseInput)
             PauseGame();
     }
 

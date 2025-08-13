@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 public class MainMenu : MonoBehaviour
 {
+
+
     public GameObject[] Menus;
     private gameController gameController;
     private InputAction anyButtonAction;
@@ -12,7 +11,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
-        StartListening();
+        if (gameController.firstLoad)
+            StartListening();
     }
 
 
@@ -77,6 +77,7 @@ public class MainMenu : MonoBehaviour
     {
         anyButtonAction.Disable();
         anyButtonAction = null;
+        gameController.firstLoad = false;
     }
 
 }

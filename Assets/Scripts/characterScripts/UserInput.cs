@@ -45,6 +45,15 @@ public class UserInput : MonoBehaviour
         playerInput = gameObject.GetComponent<PlayerInput>();
 
         SetupInputActions();
+
+        foreach (var map in playerInput.actions.actionMaps)
+            map.Disable();
+
+        var defaultMap = playerInput.actions.FindActionMap("Default");
+        if (defaultMap != null)
+            defaultMap.Enable();
+
+        SetupInputActions();
     }
 
     void SetupInputActions()
