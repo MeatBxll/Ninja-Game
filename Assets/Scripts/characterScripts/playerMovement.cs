@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
     [NonSerialized] public bool isDashing = false;
 
     private Rigidbody2D rb;
-    private bool canJump;
+    private bool canJump = true;
     private bool isGrounded;
     private CapsuleCollider2D myCollider;
 
@@ -29,7 +29,6 @@ public class playerMovement : MonoBehaviour
         {
             HandleJump();
             HandleMovement();
-
             if (UserInput.instance.dashInput && !isDashing)
                 StartCoroutine(HandleDash());
         }

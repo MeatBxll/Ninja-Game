@@ -54,7 +54,7 @@ public class UserInput : MonoBehaviour
             if (Keyboard.current != null && Mouse.current != null)
                 playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
             else if (Gamepad.current != null)
-                playerInput.SwitchCurrentControlScheme("Gamepad", Gamepad.current);
+                playerInput.SwitchCurrentControlScheme("GamePad", Gamepad.current);
         }
 
         LoadAllBindings();
@@ -106,7 +106,7 @@ public class UserInput : MonoBehaviour
         }
     }
 
-    public void RebindAction(string actionName, int bindingIndex, bool expectGamepad, Action onComplete = null)
+    public void RebindAction(string actionName, bool expectGamepad, Action onComplete = null)
     {
         InputAction actionToRebind = playerInput.actions[actionName];
         if (actionToRebind == null)
@@ -116,18 +116,42 @@ public class UserInput : MonoBehaviour
             return;
         }
 
+        int bindingIndex = -1;
+        for (int i = 0; i < actionToRebind.bindings.Count; i++)
+        {
+            var binding = actionToRebind.bindings[i];
+            if (expectGamepad && binding.groups.Contains("GamePad"))
+            {
+                bindingIndex = i;
+                break;
+            }
+            else if (!expectGamepad && binding.groups.Contains("Keyboard"))
+            {
+                bindingIndex = i;
+                break;
+            }
+        }
+
+        if (bindingIndex == -1)
+        {
+            Debug.LogWarning($"No binding found for {(expectGamepad ? "GamePad" : "Keyboard")} in action '{actionName}'");
+            onComplete?.Invoke();
+            return;
+        }
+
         actionToRebind.Disable();
 
         actionToRebind.PerformInteractiveRebinding(bindingIndex)
+            .WithTimeout(5f)
             .OnComplete(op =>
             {
-                var lastControl = op.selectedControl;
-                bool isGamepadInput = lastControl.device is Gamepad;
-                bool isKeyboardInput = lastControl.device is Keyboard;
+                var control = op.selectedControl;
+                bool isGamepad = control?.device is Gamepad;
+                bool isKeyboard = control?.device is Keyboard;
 
-                if (lastControl == null || (expectGamepad && !isGamepadInput) || (!expectGamepad && !isKeyboardInput))
+                if ((expectGamepad && !isGamepad) || (!expectGamepad && !isKeyboard))
                 {
-                    Debug.Log("Ignored input from wrong device type or no control selected.");
+                    Debug.Log("Wrong device pressed, cancelling rebind...");
                     op.Dispose();
                     actionToRebind.Enable();
                     onComplete?.Invoke();
@@ -139,8 +163,21 @@ public class UserInput : MonoBehaviour
                 op.Dispose();
                 onComplete?.Invoke();
             })
+            .OnCancel(op =>
+            {
+                Debug.Log("Rebind canceled, timed out, or wrong device used.");
+                actionToRebind.Enable();
+                op.Dispose();
+                onComplete?.Invoke();
+            })
             .Start();
     }
+
+
+
+
+
+
 
     public void ResetKeybind(string actionName, int bindingIndex)
     {

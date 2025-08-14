@@ -4,7 +4,7 @@ public class SizeFitter : MonoBehaviour
 {
     [SerializeField] private TMP_Text targetText;
     private RectTransform background;
-    private Vector2 padding = new Vector2(15f, 15f);
+    private Vector2 padding = new Vector2(25f, 15f);
 
     void Start()
     {

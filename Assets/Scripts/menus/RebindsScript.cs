@@ -47,7 +47,7 @@ public class RebindsScript : MonoBehaviour
 
         bool expectGamepad = bindingIndex == 1;
 
-        UserInput.instance.RebindAction(actionNames[actionIndex], bindingIndex, expectGamepad, OnRebindComplete);
+        UserInput.instance.RebindAction(actionNames[actionIndex], expectGamepad, OnRebindComplete);
     }
 
     private void OnRebindComplete()
@@ -91,26 +91,32 @@ public class RebindsScript : MonoBehaviour
         currentKeybindIndex = keybindIndex;
 
         int actionIndex = keybindIndex % actionNames.Length;
-        int bindingIndex = (keybindIndex < actionNames.Length) ? 0 : 1;
         string actionName = actionNames[actionIndex];
 
-        string oldKeyPath = UserInput.instance.GetBindingPath(actionName, bindingIndex);
+        int[] bindingIndices = { 0, 1 };
 
         WaitingForInputOverlay.SetActive(true);
 
-        UserInput.instance.ResetKeybind(actionName, bindingIndex);
-
-        string newKeyPath = UserInput.instance.GetBindingPath(actionName, bindingIndex);
-        foreach (var otherActionName in actionNames)
+        foreach (int bindingIndex in bindingIndices)
         {
-            if (otherActionName == actionName)
-                continue;
-            for (int i = 0; i < 2; i++)
+            string oldKeyPath = UserInput.instance.GetBindingPath(actionName, bindingIndex);
+
+            UserInput.instance.ResetKeybind(actionName, bindingIndex);
+
+            string newKeyPath = UserInput.instance.GetBindingPath(actionName, bindingIndex);
+
+            foreach (var otherActionName in actionNames)
             {
-                string otherKeyPath = UserInput.instance.GetBindingPath(otherActionName, i);
-                if (otherKeyPath == newKeyPath)
+                if (otherActionName == actionName)
+                    continue;
+
+                for (int i = 0; i < 2; i++)
                 {
-                    UserInput.instance.AssignKeyToAction(otherActionName, i, oldKeyPath);
+                    string otherKeyPath = UserInput.instance.GetBindingPath(otherActionName, i);
+                    if (otherKeyPath == newKeyPath)
+                    {
+                        UserInput.instance.AssignKeyToAction(otherActionName, i, oldKeyPath);
+                    }
                 }
             }
         }

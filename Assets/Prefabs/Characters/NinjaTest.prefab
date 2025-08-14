@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5590666295182057432}
   - component: {fileID: 4820171836471603908}
   - component: {fileID: -4241812888236508017}
+  - component: {fileID: 5145334858191815052}
   m_Layer: 0
   m_Name: NinjaTest
   m_TagString: Player
@@ -170,8 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 15
   jumpMultiplier: 20
-  dashSpeed: 0
-  dashDistance: 0
+  dashSpeed: 30
+  dashDistance: 10
 --- !u!114 &4820171836471603908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26e4bee046816046a97f0413375bc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityDurration: 0
-  abilityCooldown: 0
+  abilityDurration: 5
+  abilityCooldown: 2
 --- !u!114 &-4241812888236508017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +202,20 @@ MonoBehaviour:
   maxHearts: 3
   maxInvinsibility: 4
   heart: []
+--- !u!114 &5145334858191815052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820171836471603916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b91a24f5529f5748aaf75572aef93af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 4623990039158609520, guid: c3faa45a463aa224f88e846a684ba451, type: 3}
+  projectileSpeed: 35
+  secondsBetweenShots: 0.5
+  isSpreadShot: 0
+  spreadAngle: 10
